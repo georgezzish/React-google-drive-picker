@@ -69,9 +69,7 @@ export default function useDrivePicker(): [
     if (!config.token) {
       const client = google.accounts.oauth2.initTokenClient({
         client_id: config.clientId,
-        scope: (config.customScopes
-          ? [...defaultScopes, ...config.customScopes]
-          : defaultScopes
+        scope: (config.customScopes || defaultScopes
         ).join(' '),
         callback: (tokenResponse: authResult) => {
           setAuthRes(tokenResponse)
